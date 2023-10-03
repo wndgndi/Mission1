@@ -4,17 +4,13 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import config.SQLiteManager;
-import controller.ApiController;
 import domain.History;
-import domain.JsonResponse;
 import domain.Wifi;
 
 public class DMLService extends SQLiteManager {
-
 
 	public DMLService() {
 
@@ -28,7 +24,7 @@ public class DMLService extends SQLiteManager {
 
 	public int insertWifiInfo(List<Wifi> wifiList, String tableName) throws SQLException, IOException {
 			Connection conn = ensureConnection();
-
+				
 			final String sql = "INSERT INTO " + tableName + "(" + "\n" 
 							 + " MGRNO," + "\n"	
 							 + " BOROUTH," + "\n"

@@ -13,7 +13,8 @@ import service.DMLService;
 
 @WebServlet("/Mission1/history")
 public class HistoryController extends HttpServlet{
-	
+	private DMLService DML = new DMLService("jdbc:sqlite:mission1.db");
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException{
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lnt = Double.parseDouble(request.getParameter("lnt"));
@@ -26,12 +27,10 @@ public class HistoryController extends HttpServlet{
 	
 	public int insertHistory(double lat, double lnt) throws SQLException {
 		History history = new History();
-		DMLService dml = new DMLService();
 		
 		history.setLatitude(lat);
 		history.setLongitude(lnt);
-		
-		return dml.insertHistory("HISTORY", history);
+		return DML.insertHistory("HISTORY", history);
 	}
 	
 }
