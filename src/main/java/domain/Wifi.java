@@ -8,6 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Wifi {
+	private double distance;
+	
 	@SerializedName("X_SWIFI_MGR_NO")
 	private String mgrNo;  // 관리번호
 	

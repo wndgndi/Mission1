@@ -56,8 +56,8 @@ public class ApiController {
 
 		String json = sb.toString();
 
-		Gson gson2 = new Gson();
-		JsonResponse response = gson2.fromJson(json, JsonResponse.class);
+		Gson gson = new Gson();
+		JsonResponse response = gson.fromJson(json, JsonResponse.class);
 		long totalCount = (long) response.getTbPublicWifiInfo().getTotalCount();
 
 		conn.disconnect();

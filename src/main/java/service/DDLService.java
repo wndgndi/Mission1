@@ -79,7 +79,9 @@ public class DDLService extends SQLiteManager{
 					 + " WIFIENVIRONMENT TEXT," + "\n"
 					 + " LATITUDE REAL," + "\n"
 					 + " LONGITUDE REAL," + "\n"
-					 + " WORKDATE TEXT)" + "\n";
+					 + " WORKDATE TEXT," + "\n"
+				 	 + " DISTANCE REAL)";
+;
 		 
 		 if(checkTable(tableName)) {
 				return ResultType.WARNING;
