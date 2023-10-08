@@ -64,23 +64,23 @@ public class DDLService extends SQLiteManager{
 	
 	public ResultType createTable(String tableName) throws SQLException {
 		 final String SQL = "CREATE TABLE IF NOT EXISTS " + tableName +  "(  " + "\n"
-					 + " MGRNO TEXT," + "\n"
-					 + " BOROUTH TEXT," + "\n"
+					 + " MGRNO TEXT PRIMARY KEY," + "\n"
+					 + " BOROUGH TEXT," + "\n"
 					 + " WIFINAME TEXT," + "\n"
-					 + " ROADADDRESS TEXT," + "\n"
-					 + " DETAILADDRESS TEXT," + "\n"
+					 + " ROAD_ADDRESS TEXT," + "\n"
+					 + " DETAIL_ADDRESS TEXT," + "\n"
 					 + " INSTALLFLOOR TEXT," + "\n"
 					 + " INSTALLTYPE TEXT," + "\n"
 					 + " INSTALLAGENCY TEXT," + "\n"
 					 + " SERVICETYPE TEXT," + "\n"
 					 + " NETWORKTYPE TEXT," + "\n"
 					 + " INSTALLYEAR TEXT," + "\n"
-					 + " INDOOROUTDOOR TEXT," + "\n"
-					 + " WIFIENVIRONMENT TEXT," + "\n"
+					 + " IN_OUT_DOOR TEXT," + "\n"
+					 + " ENVIRONMENT TEXT," + "\n"
 					 + " LATITUDE REAL," + "\n"
 					 + " LONGITUDE REAL," + "\n"
 					 + " WORKDATE TEXT," + "\n"
-				 	 + " DISTANCE REAL)";
+				 	 + " DISTANCE REAL DEFAULT 0.0)";
 ;
 		 
 		 if(checkTable(tableName)) {

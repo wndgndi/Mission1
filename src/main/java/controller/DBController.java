@@ -19,12 +19,11 @@ public class DBController extends HttpServlet {
 	private DMLService DML = new DMLService("jdbc:sqlite:mission1.db");
     private DDLController DDL = new DDLController();
 	private ApiController api = new ApiController(); 
+	
     
-	// 데이터 입력 함수
 	public void insertAll() throws SQLException, IOException {
-		List<Wifi> wifiList = api.getAllData();
-	     // 데이터 입력
-	     int inserted = DML.insertWifiInfo(wifiList, "WIFI_LIST");
+		 List<Wifi> wifiList = api.getAllData();
+	     int inserted = DML.insertWifiInfo(wifiList, "WIFI");
 	     if( inserted >= 0 ) {
 	         System.out.println(String.format("데이터 입력 성공: %d건", inserted));
 	     } else {
@@ -32,20 +31,19 @@ public class DBController extends HttpServlet {
 	     }
 	 }
 	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		DBController db = new DBController();
-		
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			DDL.dropTable("WIFI_LIST");
-			DDL.createTable("WIFI_LIST");
-			db.insertAll();
-		} catch (SQLException | IOException e) {
+			DDL.dropTable("WIFI");
+			DDL.createTable("WIFI");
+			this.insertAll();
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			long totalCount = api.getTotalCount();
+			request.setAttribute("totalCount", totalCount);
+			request.getRequestDispatcher("/loadWifi.jsp").forward(request, response);
 		}
-		
-		long totalCount = api.getTotalCount();
-		request.setAttribute("totalCount", totalCount);
-		request.getRequestDispatcher("/loadWifi.jsp").forward(request, response);
 	}
+	
 	
 }

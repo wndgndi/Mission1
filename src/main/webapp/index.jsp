@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -68,19 +69,28 @@ LAT: <input type = "text" id="lat"> , LNT: <input type = "text" id = "lnt"> <but
         <th>작업일자</th>
     </tr>
     
-<c:forEach var="row" items="${dataList}">
+<c:forEach var="wifi" items="${wifiList}">
         <tr>
-            <c:forEach var="cell" items="${row}">
-                <td>${cell}</td>
-            </c:forEach>
+            <td>${wifi.distance}</td>
+            <td>${wifi.mgrNo}</td>
+            <td>${wifi.borough}</td>
+            <td>${wifi.wifiName}</td>
+            <td>${wifi.roadAddress}</td>
+            <td>${wifi.detailAddress}</td>
+            <td>${wifi.installFloor}</td>
+            <td>${wifi.installType}</td>
+            <td>${wifi.installAgency}</td>
+            <td>${wifi.serviceType}</td>
+            <td>${wifi.networkType}</td>
+            <td>${wifi.installYear}</td>
+            <td>${wifi.indoorOutdoor}</td>
+            <td>${wifi.wifiEnvironment}</td>
+            <td>${wifi.latitude}</td>
+            <td>${wifi.longitude}</td>
+            <td>${wifi.workDate}</td>
         </tr>
     </c:forEach>
 </table>
 
-<c:set var="dataList">
-    <c:forEach items="${data}" var="row">
-        <c:set var="dataList" value="${dataList},${rowArray}" />
-    </c:forEach>
-</c:set>
 </body>
 </html>

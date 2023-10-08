@@ -6,12 +6,10 @@ $(document).ready(function() {
        console.log("lnt: " + lnt);
     
         $.ajax({
-            url: "Mission1/history",
+            url: "history",
             method: "POST",
             data: {lat: lat, lnt: lnt},
-            success: function(response){
-                alert(response);
-            }
+            
         });
    
     });

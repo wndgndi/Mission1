@@ -8,9 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Wifi {
-	private double distance;
-	
-	@SerializedName("X_SWIFI_MGR_NO")
+@SerializedName("X_SWIFI_MGR_NO")
 	private String mgrNo;  // 관리번호
 	
 	@SerializedName("X_SWIFI_WRDOFC")
@@ -58,10 +56,12 @@ public class Wifi {
 	@SerializedName("WORK_DTTM")
 	private String workDate;  // 작업일자
 	
+	private double distance;
+	
     public Wifi(String mgrNo, String borough, String wifiName, String roadAddress, String detailAddress,
 			String installFloor, String installType, String installAgency, String serviceType, String networkType,
 			String installYear, String indoorOutdoor, String wifiEnvironment, double latitude, double longitude,
-			String workDate) {
+			String workDate, double distance) {
 		super();
 		this.mgrNo = mgrNo;
 		this.borough = borough;
@@ -79,6 +79,7 @@ public class Wifi {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.workDate = workDate;
+		this.distance = distance;
 	}
 
 	@Override
@@ -88,7 +89,7 @@ public class Wifi {
 				+ installType + ", installAgency=" + installAgency + ", serviceType=" + serviceType + ", networkType="
 				+ networkType + ", installYear=" + installYear + ", indoorOutdoor=" + indoorOutdoor
 				+ ", wifiEnvironment=" + wifiEnvironment + ", latitude=" + latitude + ", longitude=" + longitude
-				+ ", workDate=" + workDate + "]";
+				+ ", workDate=" + workDate + ", distance=" + distance + "]";
 	}
     
     
